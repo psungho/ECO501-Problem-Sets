@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts, mathtools, amsmath, amssymb, amsthm, enumerate, mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{newtxmath}
+\usepackage{unicode-math}
+\usepackage{dsfont}
+\usepackage{harvard}
+\title{\textbf{Microeconomic Theory I (ECO 501)} \\ Problem Set 1}
+\author{Sungho Park}
+\date{September 2020}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+We satisfy properties of the preference relation: 
+\begin{enumerate}[(i)]
+    \item Let $x\in X$, we have $x\succeq x$ which by reflexivity implies $x\sim x$. 
+    \item $\exists y\in X, x\in I(y)$. Thus, for every $x\in X$, $\exists y\in X: x\in I(y)$.
+    \item  $I(x)$ is the set of all $y\in X:y\sim x$.
+\end{enumerate}
+\begin{itemize}
+    \item 
+\begin{proof}
+By the completeness of the preference relation, we have two cases for $y\sim x$: $x\succeq y$, $y\succeq x$.
+\begin{align}
+        y\sim x & \Longleftrightarrow y\succeq x \wedge x \succeq y\\ & \Longleftrightarrow I(y)\geq I(x) \wedge I(x) \geq I(y)\\& \Longleftrightarrow I(y)=I(x)  \\ &\Longleftrightarrow  I(x)=I(y) 
+    \end{align}
+Let's approach this from another angle. $z\in I(x)\implies x\sim z$, which by transitivity implies $z\sim y\implies z\in I(y)$. Similarly, $v\in I(y)\implies v\sim y\implies v\sim z\implies v\sim x \implies v\in I(x) \implies I(x)=I(y)$ as $v$ and $z$ are arbitrary elements in $I(y)$ and $I(x)$ respectively, satisfying the first statement for $x, y \in X: x\succeq y \land y\succeq x$.  
+\begin{align}
+        I(x)\neq I(y) & \Longleftrightarrow\neg(y\sim x)\\  & \Longleftrightarrow \neg (y\succeq x \wedge x \succeq y)\\ &\Longleftrightarrow \neg (y\succeq x) \lor \neg (x \succeq y)\\ &\Longleftrightarrow \neg (I(y)\geq I(x)) \lor \neg (I(x) \geq I(y))\\ &\Longleftrightarrow  (I(y)< I(x)) \lor  (I(x) < I(y))\\ &\Longleftrightarrow (x\succ y) \lor (y\succ x)\\ &\Longleftrightarrow \forall x\in I(x), x\not \in  I(y) \land \forall y \in I(y), y \not \in I(x) \\ &\Longleftrightarrow I(x)\cap I(y)=\emptyset
+\end{align}
+Should there be $x_0: x_0\in I(x)\cap I(y)$, where $I(x)\neq I(y) \implies x\nsim y\\ $
+\begin{align}
+    x\sim x_0 \land y\sim x_0 &\implies x\sim y\\ &\implies I(x)=I(y)
+\end{align}
+Yielding a contradiction, proving our original claim. 
+\end{proof}
+\item \begin{proof}
+$\exists y: y \in I(x): y\sim x\implies x \sim y$. We have proven that in  $\forall x, y \in X$, $I(x)=I(y)\lor I(x)\cap I(y)=\emptyset$.  Given $x\sim y$:
+\begin{align}
+    x\sim y &\Longleftrightarrow x\succeq y \land y \succeq x 
+    \\&\Longleftrightarrow I(x)\geq I(y) \land I(y) \geq I(x)\\ &\Longleftrightarrow I(x)=I(y)\\ &\implies \forall y\in X, \exists y\in X: y\in I(x) \land  \forall x\in X, \exists x\in X: x\in I(y)
+\end{align}
+Assume $\nexists y \in X: x\in I(y)$:
+\begin{align}
+\forall x\in X, \nexists y \in X: x\in I(y) &\implies \forall x \in X, \nexists x: x\in I(y)\\ &\implies \nexists y \in X: y\in I(x)\\ &\implies \forall x, y\in X,  I(x) \neq I(y) \\ &\implies \forall x, y\in X, x\nsim y \implies \nexists x, y: x\sim y
+\end{align}
+This is a contradiction, as by our assumption, $I(x)$ is the set of all $y\in X: y\sim x$. This would not be possible with our conclusion. 
+\end{proof}
+\end{itemize}
+\newpage
+\section*{Problem 2}
+\begin{itemize}
+    \item \textbf{Asymmetry}:  For no $x$ and $y$ do we have both $xPy$ and $yPx$. \\$xPy\implies \neg(yPx)$
+    \item \textbf{Negative Transitivity}: For all $x, y, z \in X$, if $xPy$, then either $xPz$ or $zPy$, or both. \\$xPy\rightarrow (xPz) \lor (zPy)$
+\end{itemize}
+Let's look at \textbf{asymmetry}! Let's assume $x\succeq y \Longleftrightarrow \neg (yPx)$:
+\begin{align}
+    \neg(x \succeq y) & \Longleftrightarrow yPx\\ &\Longleftrightarrow \neg(x P y) \\ &\Longleftrightarrow y \succeq x 
+\end{align}
+Which strongly implies completeness (bundles are able to be compared to each other) and also somewhat implies transitivity as when we assume, by the definition of $P$ being strictly preference, $P\rightarrow\succ$. For no $x, y \in X$ do we have $xPy\land yPx\implies \neg (xPy) \lor \neg (yPx)$, implying that the binary relation, $\neg P$, which implies a weak preference relation, is complete.  Let's assume $x\succ y \Longleftrightarrow \neg (yPx)$:
+
+\begin{align}
+    \neg(x \succ y) & \Longleftrightarrow yPx\\ &\Longleftrightarrow \neg(x P y) \\ &\Longleftrightarrow y \succ x 
+\end{align}
+If the above did not hold, there would be a violation of transitivity. 
+Now let's examine \textbf{negative transitivity}. $xPy\rightarrow (xPz) \lor (zPy)$. Logically, this implies $xPy\rightarrow (xPz) \lor (zPy)$, by the contrapositive, that $\neg((xPz) \lor (zPy))\implies \neg(xPy)$ or in other words $\neg(xPz) \land \neg(zPy)\implies \neg(xPy)$ Let's write this in terms of preference relations $\succeq$ and $\succ$: 
+\begin{align}
+     (\neg(x\succeq z) \land \neg(z\succeq y) \implies \neg(x\succeq y)) &\implies (x\succeq z \land z\succeq y \implies x\succeq y)\\  (\neg(x\succ z) \land \neg(z\succ y) \implies \neg(x\succ y)) &\implies (x\succ z \land z\succ y \implies x\succ y)
+\end{align}
+In terms of the relation $\neg P$, this would be:
+\begin{align}
+     (\neg(xP z) \land \neg(zP y) \implies \neg(x P  y)) &\implies (x P  z \land z P y \implies x P y)
+\end{align}
+The above demonstrates \textbf{transitivity}. Let's assume $y\succeq x$. This would imply $y\succeq x \succeq y$, creating a loop--violating transitivity, implying $\neg P$ is a preference relation. 
+\newpage
+\section*{Problem 3}
+Given: \begin{itemize}
+    \item $Z$ is a finite set
+    \item $\forall X: X\subset Z, X\neq \emptyset$
+    \item $\succeq$ is a preference relation on $X$ (not $Z$). 
+    \item $A\in X$ is a "menu" to choose "an alternative option from set $A$."
+    \item $A\succeq B$ and C is disjoint to $A$ and $B$, then $A\cup C\succeq B\cup C$; and if $A\succ B$ and $C$ is a set disjoint to both $A$ and $B$, then $A\cup C\succ B\cup C$.
+    \item If $x\in Z$ and $\forall y\in A, \{x\}\succ \{y\}\implies A\cup \{x\} \succ A$. If $x\in Z$ and $\forall y\in A, \{y\}\succ \{x\}\implies A\succ A\cup \{x\}$. 
+\end{itemize}
+\begin{enumerate}[(a)]
+    \item It is plausible for first half of the first property to imply that the properties of the union of $C$ with $A$ and $B$ imply a second stage choice attitude. If an agent selected set $C$ in the first stage, it is plausible that $\succeq$ represents the preferences one will have to make at  the second stage, with whichever set the agent prefers. $A\succeq B$ implies that given the selection of set $C$ in the first round, selecting $\A$ or selecting $B$ will yield a certain preference in the second round via the union with selected set $C$, implying a relation $A\cup C\succeq B\cup C$.
+    
+    However, the second property and the second half other second property do not imply a second stage choice attitude. If $C$ is the best set decision an agent can make such that $C\succ A \succ B$ in the first round, then $A\cup C \nsucc B\cup C$, as the elements in $C$ which dominate $B$ and $A$ will be present in both RHS and LHS whether the agent picks $B$ or $A$ in the second stage, making the second stage choice irrelevant. The second property also does not make sense in this context. why would you prefer $A$ strictly to $A\cup \{x\}$ when faced with the choice to choose $\{x\}$ or not from $Z$ in the second stage? An $\{y\}\succ\{x\}$ for all $\{y\}\in A $to be exact.  
+
+    \item Cardinality: \begin{enumerate}[(i)]
+        \item Assume $\succeq$ is determined by the cardinality of the set. Clearly, Property 1 holds. For instance, if we have sets $A, B \in X$, if $|A|\geq |B|$, $|A\cup C|=|A|+|C|\geq |B|+|C|=|B\cup C|\implies A\cup C \succeq B\cup C$. Same logic with $\succ$. The second property also applies, as a singleton set $\{x\} \nsucc \{y\}$ as the cardinality of a singleton set is always equivalent ($\{x\} \sim \{y\}$), implying that the conditions for the second property to be relevant will never come into play making the statement irrelevant, which means the second property is satisfied regardless. The preferences are complete and transitive, as any sets equal or greater in cardinality to one set can be compared to each other with preference relation $\succeq$, and furthermore, preferences are transitive as a set with a higher cardinality will be preferred over all sets with lower cardinality, which means $X\succ Y$ and $Y\succ Z$ implies $X\succ Z$ as in $X$ has a higher cardinality than $Z$.
+        
+        \item  Addition: \begin{itemize}
+            \item Let's assume preferences are additive for preference relation $\succeq$ and $\succ$ on $X$, as in, a set will be considered preferred if the elements add up to have a greater total "value" as opposed to another set. 
+           \item i.e. $ A=\{x\}, B=\{y\},  C=\{z\}: x=3, y=2, z=1 \implies A\succ B\succ C\implies A\succ C$. The statement holds for $\succeq$ as well. 
+        \item $x,y ,z\in Z\subset \mathbb{N}$
+            \end{itemize}
+            
+        Property I: Assume set $A$ has elements totalling up to a higher "value" than set $B$. This implies whatever the value sum of elements of the disjoint set $C$ is, the sum of values of elements in $A$ and $C$ will always be greater than those of $B$ and $C$. The relation below also holds for $\succ$. 
+        \begin{align}
+      A\succeq B \implies A\cup C \succeq B\succeq C
+        \end{align}
+        Property II: \\Define: $z$ as elements in $z\in Z\subset \mathbb{N}$ and $A\subset Z$ such that  $\{x, y\} \in A$ represented by $\{b\} \in A$ where $x, y$ are the elements $b\in A$. The values of $x, y, z$ yield a preference relation $\{x\} \succeq \{y\} \succ \{z\}$ such that $x>y>z$ and the value of $x+y > z$, but the value of $x+y < x+y+z$:
+        \begin{align}
+            \forall z\in Z\land \forall b\in A, \{b\}\succ \{z\} &\implies A \succ A\cup \{z\}
+        \end{align}
+        Which is not true!  as the value of the elements of A total up to less than the value of the elements of A plus the value of element $z$. The second assumption is violated. 
+        
+        The preference relation is complete and transitive. Addition of elements makes is to that transitivity is possible along with completeness. You can always compare two sets with larger or smaller total values with $\succ$ and $\succeq$, and this also holds with transitivity--if $A$ had a total element value of 4, $B$ had a total element value of 3, and $C$ had a total element value of 1, we can infer $A\succ B$ and $B \succ C$ implying $A \succ C$. Likewise with $\succeq$, where sets $A$ and $B$ with equal element values would have relation $A\succeq B$ and $B\succeq A$ (aka. $A\sim B$), which then can be compared with a set with smaller or larger total element value. 
+        \item  \begin{itemize}
+            \item Assume $Z\subset \mathbb{N}$, a finite, non-empty set. Let $A, B \in X$ with $A=\{a_1, ....,  a_k\}$ and  $B=\{b_1, ....,  b_k\}$. Let $\succeq$ be a preference relation on $X$ such that $A\succeq B$ if and only if $\frac{\sum{a_i}}{|A|}\geq \frac{\sum{b_i}}{|B|}$ (average value of sum of values of elements in $A \geq B$). Then if $x\in Z$ and $\{x\}\succ \{a\}$ for all $a\in A$, $A\cup \{x\}\succ A$ and if  $x\in Z$ and $\{a\} \succ \{x\}$ for all $a\in A$, $A\succ A\cup \{x\}$, so the second property holds. However, the first property does not hold. Let $A=\{4\}$ and $B=\{3, 4\}$. $A\succ B$. If we append a disjoint set $C=\{1\}$, this yields $B\cup C\succ A\cup C$ as $\frac{4+1}{2}< \frac{4+3+1}{3}$, violating the first property! Preferences are complete and transitive for this preference relation: average values of any set can be compared by the relative size average of the all values in the set. Of course, the average of all values in a set is transitive, as in the case of these average values: $\frac{1+2}{2}>\frac{1+1}{2}\geq \frac{1}{1}\implies \frac{1+2}{2}>\frac{1}{1}$, implying preferences are transitive.
+        \end{itemize}  
+    \end{enumerate}
+    \item Given: For $\{x\}, \{y\}, \{z\} \in Z, \{x\},\succ \{y\}\succ \{z\}$ 
+    \begin{proof}
+    We have power sets $\{\{x\}, \{y\}, \{z\}, \{x, y\}, \{y, z\}, \{x ,z\},\{x, y, z\},  \emptyset \}\subset Z$.  \\ Property 1 implies: 
+    \begin{align}
+    \{x, z\}\succ \{y, z\}\\ \{x, y\}\succ \{z, y\}\\ \{y, x\}\succ \{z, x\}
+    \end{align}
+    \\Property 2 implies:
+    \begin{align}
+         \{x,y,  z\}\succ \{y, z\}\\   \{y,  z\}\succ \{z\}\\ \{x,y\}\succ \{x, y, z\} \\ \{x\}\succ \{x,y\}\\ \{x, y\}\succ \{y\}\\  \{x, z\}\succ \{z\}\\  \{y, z\}\succ \{z\}\\ \{y\}\succ \{y, z\}
+    \end{align}
+    This implies:
+    \begin{align}
+     \{x\}\succ\{x, y\}\succ \{x, y, z\} \succ \{y, z\}\succ \{z\}\\ 
+    \{x\}\succ\{x, y\}\succ \{z, x\} \succ \{y, z\}\succ \{z\}\\ \{x\}\succ\{x, y\}\succ \{y\} \succ \{y, z\}\succ \{z\}\\
+    \end{align}
+    By the relation  $\{y\} \succ \{y, z\}\implies \{x, y\}\succ  \{x, y, z\}$ and  $\{x, y\} \succ \{y, z\}\implies \{x, y, z\}\succ  \{y, z\}$.
+    \begin{align}
+        \{x\}\succ\{x, y\}\succ  \{y\}\succ\{y, z\}\succ \{z\}\land \{x\}\succ\{x, y\}\succ \{z, x\}\succ \{x, y, z\} \succ\{y, z\}\succ \{z\}\\ \implies  \{x\}\succ\{x, y\}\succ \{z, x\}\succ \{x, y, z\}   {}?{} \{y\}\succ\{y, z\}\succ \{z\}\\
+    \end{align}
+    As we can see, deriving a preference relation between $\{x, y, z\}$ and $\{y\}$ with the two properties is impossible in $X$, the non empty subsets of $Z$. For a preference relation to be satisfied, preference relations must be complete and transitive, but in our case, we cannot compare some bundles with others, leading to a violation in completeness. Therefore, there is no preference relation.
+    \end{proof}
+\end{enumerate}
+\end{document}
